@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUVAYLA Home Spa — مساج استرخائي منزلي | 199 ريال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Markazi+Text:wght@500;600;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F0E9;
+    --cream-2:#F1E6DB;
+    --blush:#EBC9C4;
+    --rosegold:#C98B7A;
+    --champagne:#D7B18C;
+    --brown:#774B43;
+    --deep:#4A2E28;
+    --white:#FFFDFB;
+    --shadow: 0 20px 50px -20px rgba(74,46,40,0.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--deep);
+    font-family:'Tajawal', sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+  .brand{
+    font-family:'Cormorant Garamond', serif;
+    letter-spacing:0.14em;
+  }
+  .display{
+    font-family:'Markazi Text', serif;
+    font-weight:700;
+  }
+
+  /* ---------- ambient petals ---------- */
+  .petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .petal{
+    position:absolute; top:-40px; width:14px; height:18px;
+    background:#E8A6A0;
+    border-radius:70% 0 70% 0;
+    opacity:0.55;
+    animation:fall linear infinite;
+  }
+  .petal:nth-child(odd){background:var(--blush);}
+  .petal:nth-child(3n){background:#D98A93;}
+  @keyframes fall{
+    0%{ transform: translateY(-5vh) translateX(0) rotate(0deg); opacity:0; }
+    10%{ opacity:0.6;}
+    100%{ transform: translateY(110vh) translateX(40px) rotate(240deg); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .petal{ animation:none; display:none; }
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- top ribbon ---------- */
+  .topbar{
+    position:relative; z-index:2;
+    text-align:center;
+    background:linear-gradient(90deg,var(--rosegold),var(--champagne));
+    color:var(--white);
+    font-size:13px;
+    letter-spacing:0.06em;
+    padding:9px 12px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; z-index:1;
+    max-width:520px; margin:0 auto;
+    padding:38px 22px 10px;
+    text-align:center;
+  }
+  .logo-wrap{
+    position:relative; width:132px; height:132px; margin:0 auto 10px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .logo-wrap::before{
+    content:''; position:absolute; inset:-6px; border-radius:50%;
+    background:conic-gradient(from 0deg, var(--rosegold), var(--champagne), var(--blush), var(--rosegold));
+    opacity:0.55;
+  }
+  .logo-ring{
+    position:relative; width:126px; height:126px; border-radius:50%;
+    background:var(--white);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px -10px rgba(119,75,67,0.35), inset 0 0 0 1px rgba(201,139,122,0.25);
+    overflow:hidden;
+  }
+  .logo{ width:82%; height:82%; object-fit:contain; filter:none; }
+  .brandname{ font-size:30px; color:var(--brown); }
+  .tagline{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:14px; color:var(--rosegold); letter-spacing:0.08em; margin-bottom:22px;
+  }
+
+  .offer-badge{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--deep); color:var(--cream);
+    padding:6px 16px; border-radius:30px;
+    font-size:12.5px; letter-spacing:0.04em; margin-bottom:18px;
+  }
+  .offer-badge span{ color:var(--champagne); }
+
+  .hero h1{
+    font-size:34px; line-height:1.35; color:var(--deep);
+    margin-bottom:8px;
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--rosegold);
+  }
+  .hero p.sub{
+    font-size:15.5px; color:var(--brown); opacity:0.85;
+    max-width:360px; margin:0 auto 26px; line-height:1.9;
+  }
+
+  /* ---------- price card ---------- */
+  .price-card{
+    position:relative;
+    background:var(--white);
+    border:1px solid var(--blush);
+    border-radius:26px;
+    padding:26px 20px 22px;
+    box-shadow:var(--shadow);
+    max-width:340px; margin:0 auto 26px;
+  }
+  .price-card .duration{
+    font-size:13px; color:var(--brown); opacity:0.75; margin-bottom:2px;
+  }
+  .price-card .price{
+    font-family:'Markazi Text', serif; font-weight:700;
+    font-size:64px; color:var(--rosegold); line-height:1;
+  }
+  .price-card .price sup{
+    font-family:'Tajawal',sans-serif; font-weight:500;
+    font-size:17px; margin-inline-start:6px; color:var(--brown);
+  }
+  .price-card .old{
+    font-size:13px; color:var(--brown); opacity:0.55;
+    text-decoration:line-through; margin-top:2px;
+  }
+  .price-card .divider{
+    height:1px; background:var(--cream-2); margin:14px 0;
+  }
+  .price-card .service-name{
+    font-size:19px; font-weight:700; color:var(--deep); margin-bottom:4px;
+  }
+  .price-card .service-desc{
+    font-size:13px; color:var(--brown); opacity:0.8; line-height:1.7;
+  }
+  .risk-note{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    margin-top:14px; padding-top:14px; border-top:1px dashed var(--cream-2);
+    font-size:12px; color:var(--rosegold); font-weight:700;
+  }
+  .risk-note svg{ width:15px; height:15px; flex-shrink:0; }
+
+  .cta-btn{
+    position:relative;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background:linear-gradient(135deg,var(--brown),var(--rosegold));
+    color:var(--white);
+    text-decoration:none;
+    font-size:17px; font-weight:700;
+    padding:16px 20px; border-radius:50px;
+    max-width:340px; margin:0 auto 8px;
+    box-shadow:0 14px 30px -10px rgba(119,75,67,0.55), 0 0 0 0 rgba(119,75,67,0.5);
+    transition:transform .25s ease, box-shadow .25s ease;
+    overflow:hidden;
+    animation:glow 2.4s ease-in-out infinite;
+  }
+  .cta-btn::after{
+    content:''; position:absolute; top:0; bottom:0; width:60px;
+    background:linear-gradient(115deg, transparent, rgba(255,255,255,0.45), transparent);
+    animation:shine 3.2s ease-in-out infinite;
+  }
+  @keyframes shine{
+    0%{ left:-20%; }
+    50%{ left:120%; }
+    100%{ left:120%; }
+  }
+  @keyframes glow{
+    0%,100%{ box-shadow:0 14px 30px -10px rgba(119,75,67,0.55), 0 0 0 0 rgba(119,75,67,0.45); }
+    50%{ box-shadow:0 14px 34px -6px rgba(119,75,67,0.7), 0 0 0 10px rgba(119,75,67,0); }
+  }
+  .cta-btn:hover{ transform:translateY(-2px) scale(1.02); }
+  .cta-btn svg{ width:20px; height:20px; flex-shrink:0; }
+  .cta-note{
+    font-size:12px; color:var(--brown); opacity:0.65; margin-bottom:34px;
+  }
+
+  /* ---------- whatsapp badge (repeated) ---------- */
+  .call-badge{
+    position:relative; overflow:hidden;
+    display:inline-flex; align-items:center; gap:10px;
+    background:linear-gradient(135deg,#25D366,#1EBE5B);
+    color:var(--white); text-decoration:none;
+    padding:14px 26px; border-radius:50px;
+    font-size:16px; font-weight:700;
+    margin:0 auto 30px; direction:ltr;
+    box-shadow:0 14px 30px -10px rgba(37,211,102,0.6), 0 0 0 0 rgba(37,211,102,0.5);
+    animation:call-pulse 2s ease-in-out infinite;
+  }
+  .call-badge::after{
+    content:''; position:absolute; top:0; bottom:0; width:60px;
+    background:linear-gradient(115deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation:call-shine 2.6s ease-in-out infinite;
+  }
+  @keyframes call-shine{
+    0%{ left:-20%; } 50%{ left:120%; } 100%{ left:120%; }
+  }
+  .call-badge .ic{
+    width:36px; height:36px; border-radius:50%; flex-shrink:0;
+    background:rgba(255,255,255,0.22);
+    color:var(--white); display:flex; align-items:center; justify-content:center;
+  }
+  .call-badge .ic svg{ width:19px; height:19px; }
+  .call-badge .num{ font-family:'Markazi Text',serif; font-weight:700; font-size:20px; color:var(--white); }
+  .call-badge .lbl{ font-family:'Tajawal',sans-serif; direction:rtl; font-size:12.5px; color:var(--white); opacity:0.92; display:block; }
+  @keyframes call-pulse{
+    0%,100%{ transform:scale(1); box-shadow:0 14px 30px -10px rgba(37,211,102,0.6), 0 0 0 0 rgba(37,211,102,0.45); }
+    50%{ transform:scale(1.035); box-shadow:0 16px 34px -6px rgba(37,211,102,0.8), 0 0 0 10px rgba(37,211,102,0); }
+  }
+  @media (prefers-reduced-motion: reduce){ .call-badge{ animation:none; } .call-badge::after{ animation:none; } }
+  .call-wrap{ text-align:center; }
+
+  /* ---------- floating whatsapp icon ---------- */
+  .wa-float{
+    position:fixed; bottom:20px; left:20px; z-index:60;
+    width:60px; height:60px; border-radius:50%;
+    background:linear-gradient(135deg,#25D366,#1EBE5B); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 30px -8px rgba(37,211,102,0.7);
+    animation:wa-float-pulse 2s ease-in-out infinite;
+    text-decoration:none;
+  }
+  .wa-float svg{ width:30px; height:30px; }
+  @keyframes wa-float-pulse{
+    0%,100%{ transform:scale(1); box-shadow:0 12px 30px -8px rgba(37,211,102,0.7); }
+    50%{ transform:scale(1.12); box-shadow:0 16px 36px -4px rgba(37,211,102,0.95); }
+  }
+  @media (prefers-reduced-motion: reduce){ .wa-float{ animation:none; } }
+  @media (max-width:480px){
+    .wa-float{ width:54px; height:54px; bottom:16px; left:16px; }
+    .wa-float svg{ width:26px; height:26px; }
+  }
+
+  /* ---------- gallery strip ---------- */
+  .gallery{
+    position:relative; z-index:1;
+    max-width:900px; margin:0 auto; padding:0 22px 8px;
+    display:grid; grid-template-columns:1.3fr 1fr; gap:14px;
+  }
+  .gallery img{
+    width:100%; height:100%; object-fit:cover; border-radius:22px;
+    box-shadow:var(--shadow);
+  }
+  .gallery .tall{ height:420px; }
+  .gallery .side{ display:flex; flex-direction:column; gap:14px; height:420px; }
+  .gallery .side .quote{
+    background:var(--white); border-radius:22px; padding:22px 18px;
+    display:flex; flex-direction:column; justify-content:center;
+    box-shadow:var(--shadow); flex:1;
+  }
+  .gallery .side .quote p{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:19px; color:var(--brown); line-height:1.7;
+  }
+  .gallery .side img{ flex:1; }
+
+  /* ---------- section title ---------- */
+  .section{ position:relative; z-index:1; max-width:900px; margin:0 auto; padding:64px 22px 10px; }
+  .section-head{ text-align:center; margin-bottom:34px; }
+  .eyebrow{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    color:var(--rosegold); font-size:15px; letter-spacing:0.08em; margin-bottom:6px;
+  }
+  .section-head h2{ font-size:26px; color:var(--deep); }
+
+  /* ---------- steps ---------- */
+  .steps{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+  }
+  .step{
+    background:var(--white); border-radius:20px; padding:26px 18px;
+    text-align:center; box-shadow:0 10px 26px -14px rgba(74,46,40,0.18);
+    border-top:3px solid var(--champagne);
+  }
+  .step .num{
+    font-family:'Markazi Text', serif; font-weight:700; font-size:30px;
+    color:var(--blush); -webkit-text-stroke:1px var(--rosegold); margin-bottom:10px;
+  }
+  .step h3{ font-size:16.5px; margin-bottom:8px; color:var(--deep); }
+  .step p{ font-size:13px; color:var(--brown); opacity:0.8; line-height:1.7; }
+
+  /* ---------- trust grid ---------- */
+  .trust{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+  }
+  .trust-item{
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    text-align:center; padding:18px 8px;
+  }
+  .trust-item .ic{
+    width:46px; height:46px; border-radius:50%;
+    background:var(--cream-2); display:flex; align-items:center; justify-content:center;
+    color:var(--rosegold);
+  }
+  .trust-item span{ font-size:13px; color:var(--brown); font-weight:500; }
+
+  /* ---------- location strip ---------- */
+  .location{
+    max-width:900px; margin:50px auto 0; padding:0 22px;
+  }
+  .location-inner{
+    background:
+      linear-gradient(135deg, rgba(122,74,70,0.85), rgba(74,46,40,0.88)),
+      url('assets/protocol-bg.jpeg') center/cover no-repeat;
+    color:var(--cream);
+    border-radius:24px; padding:30px 26px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    flex-wrap:wrap;
+  }
+  .location-inner .txt h3{ font-size:19px; margin-bottom:6px; color:var(--champagne); }
+  .location-inner .txt p{ font-size:13.5px; opacity:0.85; max-width:340px; line-height:1.8; }
+  .location-inner .pin{
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.08); padding:10px 18px; border-radius:30px;
+    font-size:14px; white-space:nowrap;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    position:relative; z-index:1;
+    text-align:center; padding:60px 22px 130px;
+  }
+  footer .flogo{ width:56px; margin:0 auto 10px; opacity:0.9; }
+  footer .fbrand{ font-size:19px; color:var(--brown); margin-bottom:2px; }
+  footer .ftag{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:12.5px; color:var(--rosegold); margin-bottom:16px; }
+  footer .fnote{ font-size:12px; color:var(--brown); opacity:0.6; }
+
+  /* ---------- booking form ---------- */
+  .booking-form{
+    max-width:420px; margin:0 auto;
+    background:var(--white); border:1px solid var(--blush);
+    border-radius:24px; padding:26px 22px;
+    box-shadow:var(--shadow);
+  }
+  .bf-row{ margin-bottom:14px; text-align:right; }
+  .bf-row label{ display:block; font-size:12.5px; color:var(--brown); margin-bottom:6px; font-weight:500; }
+  .bf-row input{
+    width:100%; padding:12px 14px; border-radius:12px;
+    border:1px solid var(--cream-2); background:var(--cream);
+    font-family:'Tajawal',sans-serif; font-size:14.5px; color:var(--deep);
+    outline:none; transition:border-color .2s ease;
+  }
+  .bf-row input:focus{ border-color:var(--rosegold); }
+  .bf-submit{ width:100%; max-width:none; margin:6px 0 12px; }
+  .bf-submit:disabled{ opacity:0.7; cursor:default; }
+  .bf-note{ font-size:11.5px; color:var(--brown); opacity:0.7; text-align:center; line-height:1.7; }
+  .bf-success{
+    display:none; margin-top:14px; text-align:center;
+    background:var(--cream-2); color:var(--deep);
+    border-radius:14px; padding:14px; font-size:13.5px; line-height:1.8;
+  }
+  .bf-success.show{ display:block; }
+
+  /* ---------- team banner ---------- */
+  .team-banner{
+    position:relative; z-index:1;
+    max-width:900px; margin:56px auto 0; padding:0 22px;
+  }
+  .team-banner .frame{
+    position:relative; border-radius:26px; overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .team-banner img{ width:100%; display:block; }
+  .team-banner .cap{
+    position:absolute; inset:auto 0 0 0;
+    background:linear-gradient(0deg, rgba(74,46,40,0.82), rgba(74,46,40,0));
+    color:var(--cream); padding:34px 24px 20px; text-align:center;
+  }
+  .team-banner .cap h3{ font-size:20px; margin-bottom:4px; color:var(--cream); }
+  .team-banner .cap p{ font-size:13px; opacity:0.85; }
+
+  /* ---------- dark protocol section ---------- */
+  .protocol{
+    position:relative; z-index:1;
+    background:
+      linear-gradient(135deg, rgba(122,74,70,0.82), rgba(74,46,40,0.86)),
+      url('assets/protocol-bg.jpeg') center/cover no-repeat;
+    color:var(--cream);
+    margin-top:64px; padding:60px 22px;
+  }
+  .protocol-inner{ max-width:900px; margin:0 auto; }
+  .protocol .eyebrow{ color:var(--champagne); }
+  .protocol .section-head h2{ color:var(--cream); }
+  .protocol-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:16px;
+  }
+  .protocol-item{
+    display:flex; align-items:flex-start; gap:12px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:16px; padding:18px;
+  }
+  .protocol-item .ic{
+    width:34px; height:34px; flex-shrink:0; border-radius:50%;
+    background:rgba(215,177,140,0.18); color:var(--champagne);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .protocol-item h4{ font-size:14.5px; margin-bottom:4px; color:var(--cream); }
+  .protocol-item p{ font-size:12.5px; color:var(--cream); opacity:0.7; line-height:1.7; }
+
+  /* ---------- credential strip ---------- */
+  .credentials{
+    display:flex; justify-content:center; gap:28px; flex-wrap:wrap;
+    margin-top:40px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .credentials .item{ text-align:center; }
+  .credentials .item .n{ font-family:'Markazi Text',serif; font-weight:700; font-size:26px; color:var(--champagne); }
+  .credentials .item .l{ font-size:11.5px; opacity:0.75; margin-top:2px; }
+
+  /* ---------- reviews ---------- */
+  .reviews{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .review-card{
+    background:var(--white); border-radius:20px; padding:22px 20px;
+    box-shadow:0 10px 26px -14px rgba(74,46,40,0.18);
+    border:1px solid var(--cream-2);
+  }
+  .review-card .stars{ color:var(--champagne); font-size:15px; letter-spacing:2px; margin-bottom:10px; }
+  .review-card p{ font-size:13.5px; color:var(--brown); line-height:1.85; margin-bottom:14px; min-height:76px; }
+  .review-card .who{ display:flex; align-items:center; gap:10px; }
+  .review-card .avatar{
+    width:34px; height:34px; border-radius:50%;
+    background:var(--cream-2); color:var(--rosegold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Markazi Text',serif; font-weight:700; font-size:15px;
+  }
+  .review-card .who .name{ font-size:13px; font-weight:700; color:var(--deep); }
+  .review-card .who .meta{ font-size:11px; color:var(--brown); opacity:0.6; }
+  @media (max-width:720px){ .reviews{ grid-template-columns:1fr; } }
+  @media (max-width:640px){ .protocol-grid{ grid-template-columns:1fr; } }
+
+  @media (max-width:720px){
+    .gallery{ grid-template-columns:1fr; }
+    .gallery .tall{ height:300px; }
+    .gallery .side{ height:auto; flex-direction:row; }
+    .gallery .side img{ height:180px; }
+    .steps, .trust{ grid-template-columns:1fr 1fr; }
+    .location-inner{ justify-content:center; text-align:center; }
+    .location-inner .txt p{ margin:0 auto; }
+  }
+  @media (max-width:420px){
+    .hero h1{ font-size:28px; }
+    .price-card .price{ font-size:54px; }
+  }
+</style>
+<!-- Snap Pixel Code -->
+<script type="text/javascript">
+(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
+{a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
+a.queue=[];var s='script';var r=t.createElement(s);r.async=!0;
+r.src=n;var u=t.getElementsByTagName(s)[0];
+u.parentNode.insertBefore(r,u);})(window,document,
+'https://sc-static.net/scevent.min.js');
+
+snaptr('init', 'eb21af26-1d1c-4ec2-bfa4-2016fe90160f');
+snaptr('track', 'PAGE_VIEW');
+</script>
+<!-- End Snap Pixel Code -->
+</head>
+<body>
+
+<div class="petals" aria-hidden="true"></div>
+
+<div class="topbar">عرض الإطلاق لفترة محدودة · خدمة منزلية داخل الرياض</div>
+
+<section class="hero">
+  <div class="logo-wrap"><div class="logo-ring"><img class="logo" src="assets/logo.png" alt="NUVAYLA Home Spa"></div></div>
+  <div class="tagline">Relax. Glow. Indulge.</div>
+
+  <div class="offer-badge">✦ عرض الإطلاق <span>60 دقيقة بـ199 ريال</span></div>
+
+  <h1>ساعة من الراحة<br><em>بدون ما تطلعين من بيتك</em></h1>
+  <p class="sub">مساج استرخائي منزلي كامل، بأيدٍ مدرّبة وتجهيزات فندقية كاملة، تصل إليك أينما كنتِ داخل الرياض.</p>
+
+  <div class="price-card">
+    <div class="duration">جلسة 60 دقيقة</div>
+    <div class="price">199<sup>ريال</sup></div>
+    <div class="divider"></div>
+    <div class="service-name">مساج استرخائي منزلي</div>
+    <div class="service-desc">جلسة استرخاء كاملة تُنعش الجسم وتريح الذهن، في خصوصية وراحة منزلك بالكامل.</div>
+    <div class="risk-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+      الدفع عند الجلسة مباشرة — بدون أي دفع مسبق
+    </div>
+  </div>
+
+  <a class="cta-btn" href="#booking">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+    احجزي جلستك الآن
+  </a>
+  <div class="cta-note">التواصل الأول لتأكيد الموعد فقط — بدون أي التزام أو حجز نهائي</div>
+
+  <div class="call-wrap">
+    <a class="call-badge" href="https://wa.me/966573883310?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AD%D8%AC%D8%B2%20%D9%85%D8%B3%D8%A7%D8%AC%20%D8%A7%D8%B3%D8%AA%D8%B1%D8%AE%D8%A7%D8%A6%D9%8A%20%D8%A8%D8%B9%D8%B1%D8%B6%20199%20%D8%B1%D9%8A%D8%A7%D9%84" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.39a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m0 1.67c4.55 0 8.24 3.69 8.24 8.24 0 4.55-3.69 8.24-8.24 8.24a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.18 8.18 0 0 1-1.26-4.35c0-4.55 3.7-8.24 8.26-8.24m-4.53 4.72c-.16 0-.43.06-.65.31-.22.25-.87.85-.87 2.06 0 1.22.89 2.4 1.02 2.56.13.17 1.74 2.77 4.28 3.79 2.12.84 2.55.68 3.01.63.46-.04 1.48-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.07-.11-.24-.17-.5-.3-.26-.14-1.55-.77-1.79-.85-.24-.09-.42-.14-.6.13-.18.27-.68.85-.83 1.03-.16.17-.31.2-.57.06-.26-.13-1.09-.4-2.07-1.28-.77-.68-1.29-1.53-1.44-1.79-.15-.26-.02-.4.11-.54.12-.12.27-.31.4-.47.14-.16.18-.27.28-.45.09-.18.05-.34-.02-.47-.07-.14-.6-1.5-.85-2.05-.22-.5-.45-.44-.62-.45-.16-.01-.34-.01-.53-.01Z"/></svg></span>
+      <span><span class="num">0573883310</span><span class="lbl">أرسلي الآن عبر واتساب</span></span>
+    </a>
+  </div>
+</section>
+
+<div class="gallery">
+  <img class="tall" src="assets/relax-poster.jpeg" alt="مساج استرخائي منزلي NUVAYLA">
+  <div class="side">
+    <div class="quote">
+      <p>“تجربة السبا تأتي إلى منزلك — فخامة واسترخاء وعناية في أجواء منزلية فاخرة.”</p>
+    </div>
+    <img src="assets/hero-bowl.jpeg" alt="أدوات العناية NUVAYLA Home Spa">
+  </div>
+</div>
+
+<div class="team-banner">
+  <div class="frame">
+    <img src="assets/team-poster.jpeg" alt="فريق NUVAYLA Home Spa">
+    <div class="cap">
+      <h3>أخصائيات فلبينيات مدرّبات بخبرة طويلة</h3>
+      <p>فريق محترف موحّد الزي، ملتزم بأعلى معايير النظافة والخصوصية في كل جلسة</p>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow">كيف تحجز</div>
+    <h2>ثلاث خطوات وتصلك الجلسة</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">01</div>
+      <h3>عبّي بيانات الحجز</h3>
+      <p>اضغطي "احجزي جلستك الآن" وعبّي الاسم والجوال والحي والوقت المناسب.</p>
+    </div>
+    <div class="step">
+      <div class="num">02</div>
+      <h3>حدّد وقتك</h3>
+      <p>نؤكد لك الموعد المتاح، وتجهّز الأخصائية أدواتها قبل الوصول.</p>
+    </div>
+    <div class="step">
+      <div class="num">03</div>
+      <h3>استرخِ في منزلك</h3>
+      <p>نصل بكامل التجهيزات، وتبدأ الجلسة في خصوصية وراحة منزلك.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow">لماذا NUVAYLA</div>
+    <h2>تفاصيل تصنع فرقًا</h2>
+  </div>
+  <div class="trust">
+    <div class="trust-item">
+      <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z"/></svg></div>
+      <span>أخصائيات مدرّبات</span>
+    </div>
+    <div class="trust-item">
+      <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 12a9 9 0 0 1 9-9M3 12a9 9 0 0 0 9 9M12 3a9 9 0 0 1 9 9M12 3v18M12 21a9 9 0 0 0 9-9"/></svg></div>
+      <span>تجهيزات متكاملة</span>
+    </div>
+    <div class="trust-item">
+      <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.35-9.5-8.9C.5 8.2 3 4.5 6.7 4.5c2 0 3.4 1.1 5.3 3 1.9-1.9 3.3-3 5.3-3 3.7 0 6.2 3.7 4.2 7.6C19 16.65 12 21 12 21Z"/></svg></div>
+      <span>أدوات نظيفة ومعقمة</span>
+    </div>
+    <div class="trust-item">
+      <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9.5 12 3l9 6.5V21H3V9.5Z"/></svg></div>
+      <span>تجربة سبا منزلية راقية</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="booking">
+  <div class="section-head">
+    <div class="eyebrow">احجزي الآن</div>
+    <h2>عبّي بياناتك ونتواصل معك لتأكيد الموعد</h2>
+  </div>
+
+  <form id="bookingForm" class="booking-form">
+    <div class="bf-row">
+      <label>الاسم</label>
+      <input type="text" name="name" required placeholder="اسمك الكريم">
+    </div>
+    <div class="bf-row">
+      <label>رقم الجوال</label>
+      <input type="tel" name="phone" required placeholder="05xxxxxxxx">
+    </div>
+    <div class="bf-row">
+      <label>الحي</label>
+      <input type="text" name="neighborhood" required placeholder="مثال: النرجس">
+    </div>
+    <div class="bf-row">
+      <label>الوقت المفضل</label>
+      <input type="text" name="time" required placeholder="مثال: مساءً بعد 6">
+    </div>
+    <button type="submit" class="cta-btn bf-submit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      <span class="bf-submit-text">إرسال طلب الحجز</span>
+    </button>
+    <div class="bf-note">جلسة مساج استرخائي منزلي — 60 دقيقة بـ199 ريال. الدفع عند الجلسة، ونتواصل معك خلال وقت قصير لتأكيد الموعد فقط — بدون أي التزام مسبق.</div>
+    <div id="bfSuccess" class="bf-success">تم استلام طلبك بنجاح 🤍 راح نتواصل معك قريبًا لتأكيد الموعد.</div>
+  </form>
+
+  <div class="call-wrap" style="margin-top:22px;">
+    <a class="call-badge" href="https://wa.me/966573883310?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AD%D8%AC%D8%B2%20%D9%85%D8%B3%D8%A7%D8%AC%20%D8%A7%D8%B3%D8%AA%D8%B1%D8%AE%D8%A7%D8%A6%D9%8A%20%D8%A8%D8%B9%D8%B1%D8%B6%20199%20%D8%B1%D9%8A%D8%A7%D9%84" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.39a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m0 1.67c4.55 0 8.24 3.69 8.24 8.24 0 4.55-3.69 8.24-8.24 8.24a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.18 8.18 0 0 1-1.26-4.35c0-4.55 3.7-8.24 8.26-8.24m-4.53 4.72c-.16 0-.43.06-.65.31-.22.25-.87.85-.87 2.06 0 1.22.89 2.4 1.02 2.56.13.17 1.74 2.77 4.28 3.79 2.12.84 2.55.68 3.01.63.46-.04 1.48-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.07-.11-.24-.17-.5-.3-.26-.14-1.55-.77-1.79-.85-.24-.09-.42-.14-.6.13-.18.27-.68.85-.83 1.03-.16.17-.31.2-.57.06-.26-.13-1.09-.4-2.07-1.28-.77-.68-1.29-1.53-1.44-1.79-.15-.26-.02-.4.11-.54.12-.12.27-.31.4-.47.14-.16.18-.27.28-.45.09-.18.05-.34-.02-.47-.07-.14-.6-1.5-.85-2.05-.22-.5-.45-.44-.62-.45-.16-.01-.34-.01-.53-.01Z"/></svg></span>
+      <span><span class="num">0573883310</span><span class="lbl">أو راسلينا عبر واتساب</span></span>
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div class="eyebrow">آراء العميلات</div>
+    <h2>تجارب حقيقية معنا</h2>
+  </div>
+  <div class="reviews">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>مررره ارتحت بالتجربة، الأخصائية محترمة وشغلها مرتب وهادئ، وكل التجهيزات كانت معها. إن شاء الله مو آخر مرة 🤍</p>
+      <div class="who"><div class="avatar">ي</div><div><div class="name">يارا</div><div class="meta">الرياض</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>جربت جلسة المساج اللمفاوي وعجبتني كثير، خصوصًا إن الخدمة بالبيت وما احتجت أطلع. تعامل راقٍ وخصوصية واهتمام بالتفاصيل.</p>
+      <div class="who"><div class="avatar">س</div><div><div class="name">سارة</div><div class="meta">الرياض</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>كنت مترددة بالبداية لكن التجربة كانت أفضل مما توقعت، الالتزام بالموعد ممتاز والأخصائية جدًا لطيفة ومحترفة. أكيد بحجز مرة ثانية ✨</p>
+      <div class="who"><div class="avatar">ر</div><div><div class="name">ريما</div><div class="meta">الرياض</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="protocol">
+  <div class="protocol-inner">
+    <div class="section-head">
+      <div class="eyebrow">معايير العمل</div>
+      <h2>بروتوكول النظافة والخصوصية</h2>
+    </div>
+    <div class="protocol-grid">
+      <div class="protocol-item">
+        <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><h4>تعقيم كامل قبل كل جلسة</h4><p>جميع الأدوات تُعقَّم وتُجهَّز من جديد قبل كل زيارة، بلا استثناء.</p></div>
+      </div>
+      <div class="protocol-item">
+        <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><h4>مستلزمات فردية</h4><p>فوط وأغطية ومستلزمات نظيفة مخصصة لكل عميلة، لا تُشارك بين الجلسات.</p></div>
+      </div>
+      <div class="protocol-item">
+        <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><h4>خصوصية تامة داخل منزلك</h4><p>الأخصائية تصل وتغادر دون أي إزعاج، والجلسة تبقى في نطاق خصوصيتك الكاملة.</p></div>
+      </div>
+      <div class="protocol-item">
+        <div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><h4>فريق موحّد ومدرّب</h4><p>زي موحّد ومعايير عمل ثابتة لكل أخصائية، لضمان تجربة متسقة في كل مرة.</p></div>
+      </div>
+    </div>
+
+    <div class="credentials">
+      <div class="item"><div class="n">داخل الرياض</div><div class="l">تغطية كامل الأحياء</div></div>
+      <div class="item"><div class="n">60 دقيقة</div><div class="l">مدة الجلسة الواحدة</div></div>
+      <div class="item"><div class="n">فريق مدرّب</div><div class="l">بخبرة طويلة</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="location">
+  <div class="location-inner">
+    <div class="txt">
+      <h3>خدمة منزلية داخل الرياض</h3>
+      <p>نصل إلى موقعك أينما كنتِ داخل حدود مدينة الرياض، بكامل التجهيزات وأدوات العناية.</p>
+    </div>
+    <div class="pin">📍 الرياض فقط</div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:44px;text-align:center;">
+  <a class="cta-btn" href="#booking" style="margin:0 auto;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+    احجزي جلستك الآن
+  </a>
+</div>
+
+<footer>
+  <img class="flogo" src="assets/logo.png" alt="NUVAYLA">
+  <div class="fbrand brand">NUVAYLA</div>
+  <div class="ftag">Relax. Glow. Indulge.</div>
+  <div class="call-wrap" style="margin:18px 0 10px;">
+    <a class="call-badge" href="https://wa.me/966573883310?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AD%D8%AC%D8%B2%20%D9%85%D8%B3%D8%A7%D8%AC%20%D8%A7%D8%B3%D8%AA%D8%B1%D8%AE%D8%A7%D8%A6%D9%8A%20%D8%A8%D8%B9%D8%B1%D8%B6%20199%20%D8%B1%D9%8A%D8%A7%D9%84" target="_blank" rel="noopener">
+      <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.39a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m0 1.67c4.55 0 8.24 3.69 8.24 8.24 0 4.55-3.69 8.24-8.24 8.24a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.18 8.18 0 0 1-1.26-4.35c0-4.55 3.7-8.24 8.26-8.24m-4.53 4.72c-.16 0-.43.06-.65.31-.22.25-.87.85-.87 2.06 0 1.22.89 2.4 1.02 2.56.13.17 1.74 2.77 4.28 3.79 2.12.84 2.55.68 3.01.63.46-.04 1.48-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.07-.11-.24-.17-.5-.3-.26-.14-1.55-.77-1.79-.85-.24-.09-.42-.14-.6.13-.18.27-.68.85-.83 1.03-.16.17-.31.2-.57.06-.26-.13-1.09-.4-2.07-1.28-.77-.68-1.29-1.53-1.44-1.79-.15-.26-.02-.4.11-.54.12-.12.27-.31.4-.47.14-.16.18-.27.28-.45.09-.18.05-.34-.02-.47-.07-.14-.6-1.5-.85-2.05-.22-.5-.45-.44-.62-.45-.16-.01-.34-.01-.53-.01Z"/></svg></span>
+      <span><span class="num">0573883310</span><span class="lbl">أرسلي الآن عبر واتساب</span></span>
+    </a>
+  </div>
+  <div class="fnote">خدمة منزلية داخل الرياض · العدد محدود يوميًا</div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/966573883310?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AD%D8%AC%D8%B2%20%D9%85%D8%B3%D8%A7%D8%AC%20%D8%A7%D8%B3%D8%AA%D8%B1%D8%AE%D8%A7%D8%A6%D9%8A%20%D8%A8%D8%B9%D8%B1%D8%B6%20199%20%D8%B1%D9%8A%D8%A7%D9%84" aria-label="راسلينا عبر واتساب" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.29-1.39a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m0 1.67c4.55 0 8.24 3.69 8.24 8.24 0 4.55-3.69 8.24-8.24 8.24a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.18 8.18 0 0 1-1.26-4.35c0-4.55 3.7-8.24 8.26-8.24m-4.53 4.72c-.16 0-.43.06-.65.31-.22.25-.87.85-.87 2.06 0 1.22.89 2.4 1.02 2.56.13.17 1.74 2.77 4.28 3.79 2.12.84 2.55.68 3.01.63.46-.04 1.48-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.07-.11-.24-.17-.5-.3-.26-.14-1.55-.77-1.79-.85-.24-.09-.42-.14-.6.13-.18.27-.68.85-.83 1.03-.16.17-.31.2-.57.06-.26-.13-1.09-.4-2.07-1.28-.77-.68-1.29-1.53-1.44-1.79-.15-.26-.02-.4.11-.54.12-.12.27-.31.4-.47.14-.16.18-.27.28-.45.09-.18.05-.34-.02-.47-.07-.14-.6-1.5-.85-2.05-.22-.5-.45-.44-.62-.45-.16-.01-.34-.01-.53-.01Z"/></svg>
+</a>
+
+<script>
+  // ambient petals (light-weight)
+  const layer = document.querySelector('.petals');
+  const count = window.innerWidth < 600 ? 6 : 10;
+  for(let i=0;i<count;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.animationDuration = (10 + Math.random()*10) + 's';
+    p.style.animationDelay = (Math.random()*12) + 's';
+    p.style.width = p.style.height = (10 + Math.random()*8) + 'px';
+    layer.appendChild(p);
+  }
+
+  // booking form submission
+  const APPS_SCRIPT_URL = 'https://n8n.insiyabtech.com.sa/webhook/nuvayla-booking';
+  const form = document.getElementById('bookingForm');
+  const successBox = document.getElementById('bfSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = form.querySelector('.bf-submit');
+    const btnText = form.querySelector('.bf-submit-text');
+    const data = {
+      name: form.name.value,
+      phone: form.phone.value,
+      neighborhood: form.neighborhood.value,
+      time: form.time.value
+    };
+    btn.disabled = true;
+    btnText.textContent = 'جاري الإرسال...';
+
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(res){
+      if(!res.ok) throw new Error('bad status');
+      return res.json();
+    }).then(function(){
+      form.reset();
+      successBox.classList.add('show');
+      if (window.snaptr) { snaptr('track', 'SIGN_UP'); }
+      btnText.textContent = 'إرسال طلب الحجز';
+      btn.disabled = false;
+    }).catch(function(){
+      btnText.textContent = 'إرسال طلب الحجز';
+      btn.disabled = false;
+      alert('حدث خطأ، حاولي مرة أخرى أو تواصلي معنا عبر واتساب.');
+    });
+  });
+
+  // Snap Pixel: track WhatsApp intent clicks
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if (window.snaptr) { snaptr('track', 'SAVE'); }
+    });
+  });
+</script>
+
+</body>
+</html>
